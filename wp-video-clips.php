@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Video tag
+ * Plugin Name: Video clips
  * Plugin URI: 
  * Description: Allows markup of video excerpts, and linking to them
- * Version: 0.0.1
+ * Version: 0.0.2
  * Author: 
  * Author URI: 
  * License: GPL2
