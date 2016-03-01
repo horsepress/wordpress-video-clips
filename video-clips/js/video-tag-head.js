@@ -125,7 +125,7 @@ var VIDEOTAG = (function () {
     var videoHTML = function(id,url) {
 
         id = id || 'vid_';
-        url = url || 'http://horse.press/gotan/wp-content/uploads/2016/02/17Feb2016_dance1_GOPR0280.mp4';
+        url = url || ';
                
         var h = '';
         h += '<video controls id="'+ id +'" class="video-js vjs-default-skin" ';

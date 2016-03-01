@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Video tag
- * Plugin URI: http://danielpataki.com
+ * Plugin URI: 
  * Description: Allows markup of video excerpts, and linking to them
  * Version: 0.0.1
- * Author: Philip Hughson
- * Author URI: http://horse.press
+ * Author: 
+ * Author URI: 
  * License: GPL2
  */
 
