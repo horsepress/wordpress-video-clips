@@ -3,9 +3,9 @@
       position:  absolute;
       left: 200px;
       top: 100px; /* set these so Chrome doesn't return 'auto' from getComputedStyle */
-      width: auto;
-	  min-width:200px;
-	  height:600px;
+      width:200px;
+	  xmin-width:200px;
+	  xheight:600px;
 	  height: auto;
       background: rgba(255,255,255,1); 
       border: 2px  solid rgba(0,0,0,0.5); 
@@ -14,3 +14,10 @@
 	  overflow: auto;
 	  z-index: 999;
     }
+
+/*
+.floating:active{
+    height: 0;
+    width: 0;
+}
+*/

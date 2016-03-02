@@ -82,7 +82,8 @@ var VIDEOTAG = (function () {
         if (player === undefined || player.abLoopPlugin === undefined){return true;}
     
         var a = player.abLoopPlugin;
-        a.applyUrlFragment(urlFragment).goToStart().enable().player.play();
+        //a.applyUrlFragment(urlFragment).goToStart().enable().player.play();
+        a.applyUrlFragment(urlFragment).playLoop();
         return false;
     };
     
@@ -93,10 +94,8 @@ var VIDEOTAG = (function () {
         if (r.abLoopPlugin){
             r.abLoopPlugin
             .applyUrlFragment(fragment)
-            .goToStart()
             .setOptions({'pauseAfterLooping':true})
-            .enable()
-            .player.play()
+            .playLoop()
             ;
         }
         return false;
@@ -116,8 +115,11 @@ var VIDEOTAG = (function () {
             '';
 		document.body.appendChild(div);
         
+        //div.style.width = "400px";
         videojs(id).ready(function() {             
             this.hotkeys(VIDEOTAG.hotkeyOptions); 
+            //needed to fix glitch in youtube player
+            this.controlBar.playbackRateMenuButton.updateLabel();
         }); 
         return videojs.players[id];
     };
@@ -125,20 +127,25 @@ var VIDEOTAG = (function () {
     var videoHTML = function(id,url) {
 
         id = id || 'vid_';
-        url = url || ';
-               
+        url = url || '';
+        
+        var re = /youtube\.com/i;
+        var techOrder = re.test(url) ? ' ,"techOrder": ["youtube"] ' : '';
+        var type = re.test(url) ? 'video/youtube' : 'video/mp4';
+              
         var h = '';
         h += '<video controls id="'+ id +'" class="video-js vjs-default-skin" ';
         h += 'data-setup=\'{                                            ';
         h += '    "fluid": true                                         ';
-        h += '    ,"playbackRates": [0.1, 0.2, 0.5, 1, 2, 5]            ';
+        h += '    ,"playbackRates": [0.1, 0.25, 0.5, 1, 2, 5]            ';
         h += '    ,"controls":true                                      ';
         h += '    ,"preload":"metadata"                                 ';
         h += '    ,"plugins": {                                         ';
         h += '        "abLoopPlugin" : {}                               ';
         h += '    }                                                     ';
+        h += techOrder;
         h += '}\'>                                                      ';
-        h += '    <source src="' + url + '" type="video/mp4" />                ';
+        h += '    <source src="' + url + '" type="' + type + '" />                ';
         h += '</video>                                                  ';
     
         return h;
