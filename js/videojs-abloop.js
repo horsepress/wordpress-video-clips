@@ -1,4 +1,3 @@
-
 /*
  * Video.js AB loop plugin
  * Adds function to allow looping for a section of a video in video.js player
@@ -261,11 +260,12 @@
         };
 
         var playLoop = function() {
-            validateOptions();
             goToStartOfLoop(false);
             enableLoop();
+            validateOptions();
             player.play();
-        }
+        };
+
         
         var enableLoop = function(){
             opts.enabled = true;
@@ -568,7 +568,7 @@
             if (window && window.prompt){
                 window.prompt("Copy to clipboard: Ctrl+C, Enter",msg);
             }
-        }
+        };
         var createButton = function(spec,player){
             //returns a function which handles button clicks,
             var clickFunction = function(abLoopCall,whichButton){
@@ -662,9 +662,8 @@
             ,getUrlFragment : getUrlHash
             ,applyUrl : notify(applyUrl,{'start':true,'end':true})
             ,applyUrlFragment : notify(applyUrlHash,{'start':true,'end':true})
-            ,loopRequired: loopRequired                 //allows testing of conditions via API 
-            when player is paused
-            ,playLoop: playLoop
+            ,loopRequired: loopRequired                 //allows testing of conditions via API when player is paused
+            ,playLoop: notify(playLoop)
         };
 
         //set up the plugin
